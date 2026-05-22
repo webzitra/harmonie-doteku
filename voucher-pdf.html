@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8" />
+<title>Dárkový poukaz — Harmonie doteků</title>
+<meta name="robots" content="noindex, nofollow" />
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Cardo:ital,wght@1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  @page {
+    size: A4 portrait;
+    margin: 0;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #2a2520; font-family: 'Inter', sans-serif; color: #E8DDC9; }
+
+  /* Editor UI (hidden on print) */
+  .editor-bar {
+    position: sticky; top: 0; z-index: 100;
+    background: #0F0B08;
+    color: #E8DDC9;
+    padding: 14px 24px;
+    display: flex; align-items: center; justify-content: space-between;
+    border-bottom: 1px solid rgba(201,163,106,0.25);
+    font-family: 'Inter', sans-serif;
+    flex-wrap: wrap; gap: 12px;
+  }
+  .editor-bar h1 { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 18px; letter-spacing: 0.12em; color: #C9A36A; text-transform: uppercase; }
+  .editor-bar .hint { font-size: 12px; color: rgba(232,221,201,0.65); }
+  .editor-bar button {
+    background: #C9A36A; color: #0F0B08;
+    padding: 10px 20px;
+    border: none; border-radius: 2px;
+    font-family: 'Inter', sans-serif; font-weight: 500;
+    font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase;
+    cursor: pointer;
+    transition: background 200ms;
+  }
+  .editor-bar button:hover { background: #E8DDC9; }
+
+  .edit { background: rgba(201,163,106,0.12); outline: 1px dashed rgba(201,163,106,0.4); outline-offset: 2px; padding: 0 4px; border-radius: 2px; cursor: text; }
+  .edit:focus { background: rgba(201,163,106,0.2); outline-color: #C9A36A; }
+
+  /* Sheet */
+  .sheet-wrap { padding: 32px; display: flex; justify-content: center; min-height: 100vh; }
+  .sheet {
+    width: 210mm; min-height: 297mm;
+    background: #0F0B08;
+    color: #E8DDC9;
+    position: relative;
+    overflow: hidden;
+    padding: 22mm 20mm;
+    display: flex; flex-direction: column;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+  }
+  .sheet::before {
+    content: '';
+    position: absolute; top: -100px; right: -100px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(201,163,106,0.4), rgba(201,163,106,0) 70%);
+    filter: blur(80px);
+    z-index: 0;
+  }
+  .sheet::after {
+    content: '';
+    position: absolute; bottom: -100px; left: -100px;
+    width: 420px; height: 420px;
+    background: radial-gradient(circle, rgba(169,96,63,0.3), rgba(169,96,63,0) 70%);
+    filter: blur(80px);
+    z-index: 0;
+  }
+  .sheet > * { position: relative; z-index: 1; }
+
+  /* Frame */
+  .frame {
+    position: absolute; top: 12mm; left: 12mm; right: 12mm; bottom: 12mm;
+    border: 1px solid rgba(201,163,106,0.3);
+    z-index: 0; pointer-events: none;
+  }
+
+  /* Header brand */
+  .head { display: flex; align-items: center; gap: 14px; padding-bottom: 8mm; border-bottom: 1px solid rgba(201,163,106,0.18); }
+  .head .icon { width: 38px; height: 38px; flex-shrink: 0; }
+  .head .icon svg { width: 100%; height: 100%; display: block; }
+  .head .word { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 16px; letter-spacing: 0.18em; text-transform: uppercase; color: #E8DDC9; }
+  .head .word .dot { color: #C9A36A; padding: 0 3px; }
+  .head .meta { margin-left: auto; text-align: right; font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(232,221,201,0.55); }
+
+  /* Title */
+  .title-block { text-align: center; padding: 14mm 0 10mm; }
+  .title-block .label { font-weight: 500; font-size: 11px; letter-spacing: 0.42em; text-transform: uppercase; color: #C9A36A; margin-bottom: 10mm; }
+  .title-block h1 { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 54pt; line-height: 1.05; letter-spacing: -0.01em; color: #E8DDC9; margin: 0 0 6mm; }
+  .title-block h1 em { font-style: italic; color: #C9A36A; font-weight: 300; }
+  .title-block .sub { font-family: 'Cardo', serif; font-style: italic; font-size: 15pt; line-height: 1.5; color: rgba(232,221,201,0.7); max-width: 130mm; margin: 0 auto; }
+
+  /* Value */
+  .value-block { text-align: center; padding: 8mm 0 12mm; }
+  .value-block .row { display: inline-flex; align-items: baseline; gap: 14px; }
+  .value-block .num {
+    font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300;
+    font-size: 96pt; line-height: 0.9;
+    background: linear-gradient(180deg, #C9A36A 0%, #A9603F 100%);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.02em;
+  }
+  .value-block .cur { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 28pt; color: #C9A36A; }
+  .value-block .scope { font-family: 'Cardo', serif; font-style: italic; font-size: 13pt; color: rgba(232,221,201,0.55); margin-top: 4mm; }
+
+  /* Recipient */
+  .who { display: grid; grid-template-columns: 1fr 1fr; gap: 8mm; padding: 8mm 0; border-top: 1px solid rgba(201,163,106,0.18); border-bottom: 1px solid rgba(201,163,106,0.18); }
+  .who .cell .label { font-weight: 500; font-size: 9.5pt; letter-spacing: 0.28em; text-transform: uppercase; color: #C9A36A; margin-bottom: 4mm; }
+  .who .cell .value { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 22pt; color: #E8DDC9; }
+
+  /* Message */
+  .message { padding: 10mm 0 8mm; text-align: center; }
+  .message .label { font-weight: 500; font-size: 9.5pt; letter-spacing: 0.28em; text-transform: uppercase; color: #C9A36A; margin-bottom: 5mm; }
+  .message .text { font-family: 'Cardo', serif; font-style: italic; font-size: 14pt; line-height: 1.55; color: rgba(232,221,201,0.8); max-width: 130mm; margin: 0 auto; }
+
+  /* Code + validity */
+  .footer-row { margin-top: auto; padding-top: 8mm; display: grid; grid-template-columns: 1fr 1fr; gap: 8mm; border-top: 1px solid rgba(201,163,106,0.18); align-items: end; }
+  .footer-row .cell .label { font-weight: 500; font-size: 9.5pt; letter-spacing: 0.28em; text-transform: uppercase; color: #C9A36A; margin-bottom: 3mm; }
+  .footer-row .cell .value { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 18pt; color: #E8DDC9; }
+  .footer-row .cell.right { text-align: right; }
+  .footer-row .cell.right .value { font-family: 'Cardo', serif; font-style: italic; }
+
+  /* Sign-off */
+  .signoff { text-align: center; padding: 8mm 0 0; }
+  .signoff .name { font-family: 'Cardo', serif; font-style: italic; font-size: 22pt; color: #C9A36A; }
+  .signoff .stamp { font-family: 'Inter', sans-serif; font-size: 9.5pt; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(232,221,201,0.55); margin-top: 3mm; }
+
+  /* Contact strip */
+  .contact-strip { margin-top: 6mm; padding-top: 4mm; border-top: 1px solid rgba(201,163,106,0.12); text-align: center; font-size: 9.5pt; letter-spacing: 0.14em; color: rgba(232,221,201,0.55); }
+  .contact-strip strong { color: #C9A36A; font-weight: 500; }
+
+  /* Print rules */
+  @media print {
+    html, body { background: #0F0B08 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; color-adjust: exact; }
+    .editor-bar { display: none !important; }
+    .sheet-wrap { padding: 0; min-height: auto; }
+    .sheet { box-shadow: none; width: 100%; min-height: 100vh; margin: 0; }
+    .edit { background: transparent !important; outline: none !important; padding: 0 !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="editor-bar">
+  <h1>Voucher editor</h1>
+  <span class="hint">Klikněte na žluté pole → vyplňte → ⌘P / Tisknout → Save as PDF</span>
+  <button type="button" onclick="window.print()">Vytisknout / Uložit jako PDF</button>
+</div>
+
+<div class="sheet-wrap">
+  <div class="sheet">
+    <div class="frame" aria-hidden="true"></div>
+
+    <header class="head">
+      <div class="icon">
+        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="halo" cx="50%" cy="58%" r="45%">
+              <stop offset="0%" stop-color="#C9A36A" stop-opacity="0.5"/>
+              <stop offset="100%" stop-color="#0F0B08" stop-opacity="0"/>
+            </radialGradient>
+            <linearGradient id="flame" x1="0%" y1="100%" x2="0%" y2="0%">
+              <stop offset="0%" stop-color="#E8DDC9"/>
+              <stop offset="55%" stop-color="#C9A36A"/>
+              <stop offset="100%" stop-color="#A9603F"/>
+            </linearGradient>
+          </defs>
+          <circle cx="32" cy="40" r="22" fill="url(#halo)"/>
+          <path d="M 10 56 L 10 32 Q 10 12 32 12 Q 54 12 54 32 L 54 56" fill="none" stroke="#C9A36A" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+          <line x1="8" y1="56" x2="56" y2="56" stroke="#C9A36A" stroke-width="2.6" stroke-linecap="round"/>
+          <path d="M32 24 C 27 33, 26 41, 29.5 47 Q 32 50.5 34.5 47 C 38 41, 37 33, 32 24 Z" fill="url(#flame)"/>
+        </svg>
+      </div>
+      <div class="word">Harmonie<span class="dot">·</span>doteků</div>
+      <div class="meta">
+        Č. <span class="edit" contenteditable="true" spellcheck="false">HD-2026-001</span><br />
+        Vystaveno <span class="edit" contenteditable="true" spellcheck="false">22. 5. 2026</span>
+      </div>
+    </header>
+
+    <section class="title-block">
+      <div class="label">Dárkový poukaz</div>
+      <h1>Hodina, kterou si <em>zapamatuje</em>.</h1>
+      <div class="sub">Klenutý prostor v srdci Jihlavy. Svíčka, vlastní dech, doteky které poslouchají.</div>
+    </section>
+
+    <section class="value-block">
+      <div class="row">
+        <div class="num"><span class="edit" contenteditable="true" spellcheck="false">3 000</span></div>
+        <div class="cur">Kč</div>
+      </div>
+      <div class="scope">Libovolná masáž — tantra, kundalini, sportovní, lymfo, relaxační</div>
+    </section>
+
+    <section class="who">
+      <div class="cell">
+        <div class="label">Pro</div>
+        <div class="value"><span class="edit" contenteditable="true" spellcheck="false">Jméno obdarovaného</span></div>
+      </div>
+      <div class="cell">
+        <div class="label">Od</div>
+        <div class="value"><span class="edit" contenteditable="true" spellcheck="false">Jméno dárce</span></div>
+      </div>
+    </section>
+
+    <section class="message">
+      <div class="label">Vzkaz</div>
+      <div class="text"><span class="edit" contenteditable="true" spellcheck="false">Pro hodinu, která bude jenom Tvoje.</span></div>
+    </section>
+
+    <div class="footer-row">
+      <div class="cell">
+        <div class="label">Rezervace</div>
+        <div class="value">+420 725 433 655</div>
+      </div>
+      <div class="cell right">
+        <div class="label">Platnost do</div>
+        <div class="value"><span class="edit" contenteditable="true" spellcheck="false">22. 5. 2027</span></div>
+      </div>
+    </div>
+
+    <div class="signoff">
+      <div class="name">— Renáta</div>
+      <div class="stamp">Harmonie doteků · Matky Boží 1205/2 · Jihlava</div>
+    </div>
+
+    <div class="contact-strip">
+      <strong>harmonie-doteku.cz</strong> · harmoniedoteku.masaze@gmail.com · Po – Ne · 8:00 – 20:00
+    </div>
+
+  </div>
+</div>
+
+<script>
+  // Hint: enter klávesa nepřidá <br> ale skok na další pole — uložit blur
+  document.querySelectorAll('.edit').forEach(el => {
+    el.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') { e.preventDefault(); el.blur(); }
+    });
+  });
+</script>
+
+</body>
+</html>

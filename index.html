@@ -242,6 +242,34 @@
   *, *::before, *::after { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   html, body { overflow-x: clip; max-width: 100%; }
+
+  /* ====== A11Y: skip link + focus ====== */
+  .skip-link {
+    position: absolute; top: -120px; left: 50%;
+    transform: translateX(-50%);
+    background: var(--candle); color: var(--cave);
+    padding: 14px 24px;
+    font-family: var(--sans); font-weight: 500;
+    font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase;
+    border-radius: 2px;
+    z-index: 1000;
+    transition: top 220ms;
+    text-decoration: none;
+  }
+  .skip-link:focus { top: 14px; outline: 2px solid var(--linen); outline-offset: 2px; }
+  :focus { outline: none; }
+  :focus-visible {
+    outline: 2px solid var(--candle);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+  .visually-hidden {
+    position: absolute !important;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0,0,0,0);
+    white-space: nowrap; border: 0;
+  }
   h1, h2, h3, h4 { text-wrap: balance; }
   p, .desc, .text, .lead, .hero-sub, .intro p, .about p, .step p, .quote blockquote, .faq-answer-inner { text-wrap: pretty; }
   p, .hero-sub { hyphens: manual; }
@@ -1055,6 +1083,8 @@
 </head>
 <body>
 
+<a class="skip-link" href="#main">Přeskočit na obsah</a>
+
 <!-- Globální orby — rozprostřené přes celou výšku stránky -->
 <div class="bg-orbs" aria-hidden="true">
   <span class="orb orb--1 orb--gold"></span>
@@ -1092,6 +1122,7 @@
       <a href="#prostor" data-mm-close>Prostor</a>
       <a href="#masaze" data-mm-close>Masáže</a>
       <a href="/tantra">Tantra</a>
+      <a href="/voucher">Dárkový poukaz</a>
       <a href="#o-mne" data-mm-close>O mně</a>
       <a href="#kontakt" data-mm-close>Kontakt</a>
     </div>
@@ -1103,8 +1134,10 @@
   </div>
 </div>
 
+<main id="main">
+
 <!-- HERO -->
-<section class="hero" id="hero">
+<section class="hero" id="hero" aria-label="Úvod">
   <div class="hero-img" aria-hidden="true"></div>
   <div class="hero-overlay" aria-hidden="true"></div>
   <div class="hero-content">
@@ -1365,14 +1398,21 @@
         </div>
       </div>
 
-      <form class="form" onsubmit="event.preventDefault(); alert('Děkuji. Ozvu se do několika hodin.\\n\\n(Form je v draft preview — v produkční verzi pojede do schránky.)');">
-        <input type="text" name="jmeno" placeholder="Jméno" required />
+      <form class="form" aria-labelledby="kontakt-heading" aria-describedby="form-hint" onsubmit="event.preventDefault(); alert('Děkuji. Ozvu se do několika hodin.\\n\\n(Form je v draft preview — v produkční verzi pojede do schránky.)');">
+        <label for="f-jmeno" class="visually-hidden">Jméno</label>
+        <input type="text" id="f-jmeno" name="jmeno" placeholder="Jméno" required aria-required="true" autocomplete="name" />
+
         <div class="row">
-          <input type="tel" name="telefon" placeholder="Telefon" required />
-          <input type="email" name="email" placeholder="E-mail" />
+          <label for="f-tel" class="visually-hidden">Telefon</label>
+          <input type="tel" id="f-tel" name="telefon" placeholder="Telefon" required aria-required="true" autocomplete="tel" inputmode="tel" />
+
+          <label for="f-email" class="visually-hidden">E-mail</label>
+          <input type="email" id="f-email" name="email" placeholder="E-mail" autocomplete="email" inputmode="email" />
         </div>
+
         <div class="row">
-          <select name="masaz" required>
+          <label for="f-masaz" class="visually-hidden">Druh masáže</label>
+          <select id="f-masaz" name="masaz" required aria-required="true">
             <option value="">Druh masáže…</option>
             <option>Sportovní</option>
             <option>Relaxační</option>
@@ -1383,11 +1423,16 @@
             <option>Tantra</option>
             <option>Ještě nevím</option>
           </select>
-          <input type="text" name="termin" placeholder="Preferovaný termín" />
+
+          <label for="f-termin" class="visually-hidden">Preferovaný termín</label>
+          <input type="text" id="f-termin" name="termin" placeholder="Preferovaný termín" autocomplete="off" />
         </div>
-        <textarea name="zprava" placeholder="Co potřebuje vaše tělo (volitelné)"></textarea>
+
+        <label for="f-zprava" class="visually-hidden">Zpráva</label>
+        <textarea id="f-zprava" name="zprava" placeholder="Co potřebuje vaše tělo (volitelné)"></textarea>
+
         <button type="submit">Odeslat rezervaci</button>
-        <div class="reply-hint">Odpovídám obvykle do 4 hodin v otevírací době.</div>
+        <div class="reply-hint" id="form-hint">Odpovídám obvykle do 4 hodin v otevírací době.</div>
       </form>
     </div>
 
@@ -1408,7 +1453,9 @@
   </div>
 </section>
 
-<footer>
+</main>
+
+<footer role="contentinfo">
   <div class="wrap">
     <div>
       <div class="brand-foot">Harmonie<span class="dot">·</span>doteků</div>
@@ -1419,6 +1466,7 @@
       <a href="#prostor">Prostor</a>
       <a href="#masaze">Masáže</a>
       <a href="/tantra">Tantra</a>
+      <a href="/voucher">Dárkový poukaz</a>
       <a href="#o-mne">O mně</a>
       <a href="#recenze">Recenze</a>
       <a href="#kontakt">Kontakt</a>
@@ -1621,16 +1669,48 @@
     }, { once: true });
   })();
 
-  // Mobile menu toggle
+  // a11y focus trap helper
+  function trapFocus(container, onEscape) {
+    const FOCUSABLE = 'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+    const els = container.querySelectorAll(FOCUSABLE);
+    if (!els.length) return () => {};
+    const first = els[0], last = els[els.length - 1];
+    function onKey(e) {
+      if (e.key === 'Escape' && onEscape) { e.preventDefault(); onEscape(); return; }
+      if (e.key !== 'Tab') return;
+      if (e.shiftKey) {
+        if (document.activeElement === first) { e.preventDefault(); last.focus(); }
+      } else {
+        if (document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
+    }
+    container.addEventListener('keydown', onKey);
+    return () => container.removeEventListener('keydown', onKey);
+  }
+
+  // Mobile menu toggle (a11y: focus trap + return focus)
   (function mobileMenu() {
     const burger = document.getElementById('nav-burger');
     const menu = document.getElementById('mobile-menu');
     if (!burger || !menu) return;
-    function open() { document.body.classList.add('menu-open'); burger.setAttribute('aria-expanded', 'true'); menu.setAttribute('aria-hidden', 'false'); }
-    function close() { document.body.classList.remove('menu-open'); burger.setAttribute('aria-expanded', 'false'); menu.setAttribute('aria-hidden', 'true'); }
+    let releaseTrap = null;
+    function open() {
+      document.body.classList.add('menu-open');
+      burger.setAttribute('aria-expanded', 'true');
+      menu.setAttribute('aria-hidden', 'false');
+      const firstLink = menu.querySelector('a');
+      if (firstLink) setTimeout(() => firstLink.focus(), 100);
+      releaseTrap = trapFocus(menu, close);
+    }
+    function close() {
+      document.body.classList.remove('menu-open');
+      burger.setAttribute('aria-expanded', 'false');
+      menu.setAttribute('aria-hidden', 'true');
+      if (releaseTrap) { releaseTrap(); releaseTrap = null; }
+      burger.focus();
+    }
     burger.addEventListener('click', () => document.body.classList.contains('menu-open') ? close() : open());
     menu.querySelectorAll('[data-mm-close]').forEach(a => a.addEventListener('click', close));
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && document.body.classList.contains('menu-open')) close(); });
   })();
 
   // Nav background on scroll
@@ -1682,16 +1762,29 @@
     hideBanner();
   });
 
-  // Privacy modal
+  // Privacy modal (a11y: focus trap + return focus)
   const modal = document.getElementById('privacy-modal');
-  function openModal() { modal.classList.add('shown'); modal.setAttribute('aria-hidden', 'false'); document.body.style.overflow = 'hidden'; }
-  function closeModal() { modal.classList.remove('shown'); modal.setAttribute('aria-hidden', 'true'); document.body.style.overflow = ''; }
+  let modalLastFocus = null;
+  let modalReleaseTrap = null;
+  function openModal(trigger) {
+    modalLastFocus = trigger || document.activeElement;
+    modal.classList.add('shown'); modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    const closeBtn = modal.querySelector('[data-close]');
+    if (closeBtn) setTimeout(() => closeBtn.focus(), 50);
+    modalReleaseTrap = trapFocus(modal, closeModal);
+  }
+  function closeModal() {
+    modal.classList.remove('shown'); modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    if (modalReleaseTrap) { modalReleaseTrap(); modalReleaseTrap = null; }
+    if (modalLastFocus && typeof modalLastFocus.focus === 'function') modalLastFocus.focus();
+  }
   document.querySelectorAll('[data-open="privacy"]').forEach(el => {
-    el.addEventListener('click', (e) => { e.preventDefault(); openModal(); });
+    el.addEventListener('click', (e) => { e.preventDefault(); openModal(el); });
   });
   modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
   document.querySelectorAll('[data-close]').forEach(el => el.addEventListener('click', closeModal));
-  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal.classList.contains('shown')) closeModal(); });
 </script>
 </body>
 </html>

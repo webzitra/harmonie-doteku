@@ -66,6 +66,14 @@
   </url>
 
   <url>
+    <loc>https://harmonie-doteku.cz/voucher</loc>
+    <lastmod>2026-05-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="cs-CZ" href="https://harmonie-doteku.cz/voucher" />
+  </url>
+
+  <url>
     <loc>https://harmonie-doteku.cz/tantra</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>monthly</changefreq>
