@@ -615,14 +615,14 @@
   .service-card .price-row { display: flex; justify-content: space-between; align-items: baseline; padding-top: 18px; margin-top: 6px; border-top: 1px solid rgba(201,163,106,0.15); }
   .service-card .price { font-family: var(--serif); font-style: italic; font-size: 22px; color: var(--candle); }
   .service-card .duration { font-size: 11.5px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(232,221,201,0.5); }
-  .service-card.tantra { background: linear-gradient(135deg, rgba(169,96,63,0.22) 0%, var(--ember) 100%); border-left: 2px solid var(--terracotta); }
+  .service-card.tantra { background: linear-gradient(135deg, rgba(169,96,63,0.22) 0%, var(--ember) 100%); border-left: 2px solid var(--terracotta); grid-column: 1 / -1; }
   .service-card.tantra .meta-eyebrow, .service-card.tantra .price { color: var(--terracotta); }
   .service-card.tantra .more { margin-top: auto; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--terracotta); display: inline-flex; gap: 8px; align-items: center; border-bottom: 1px solid rgba(169,96,63,0.5); padding-bottom: 4px; align-self: flex-start; }
   @media (max-width: 900px) { .services-grid { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 600px) {
     .services-grid { grid-template-columns: 1fr; }
     .service-card { padding: 32px 26px; min-width: 0; }
-    .service-card.tantra { grid-column: auto; }
+    .service-card.tantra { grid-column: 1 / -1; }
   }
 
   /* ====== RITUÁL ====== */
@@ -1026,7 +1026,7 @@
         <div class="price-row"><span class="price">2 000 Kč</span><span class="duration">90 min</span></div>
       </div>
 
-      <div class="service-card tantra" style="grid-column: span 3;">
+      <div class="service-card tantra">
         <div class="meta-eyebrow">Tantra · Vědomá cesta</div>
         <h3>Tantrické masáže</h3>
         <p class="desc">Pro muže, ženy i páry. Devadesát až sto osmdesát minut vědomého doteku, který otevírá hloubku, kterou v běžném životě nesahá nikdo. Domlouvá se po krátkém telefonickém rozhovoru.</p>
