@@ -3,19 +3,19 @@
   "trailingSlash": false,
   "headers": [
     {
-      "source": "/fotky/(.*)",
+      "source": "/fotky/:path*",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
       ]
     },
     {
-      "source": "/(.*\\.(jpg|jpeg|png|svg|webp|ico|woff2))",
+      "source": "/:file(.+\\.(?:jpg|jpeg|png|svg|webp|ico|woff2))",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
       ]
     },
     {
-      "source": "/(index|tantra|voucher|voucher-pdf|404)\\.html",
+      "source": "/:file(.+\\.html)",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
       ]
