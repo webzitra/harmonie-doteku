@@ -277,12 +277,15 @@
   body > section, body > footer { position: relative; z-index: 2; }
   body { position: relative; }
 
-  /* ====== PARTICLES — premium dust ====== */
+  /* ====== PARTICLES — atmospheric dust, blended into bg ====== */
   .particles {
     position: fixed; inset: 0;
     width: 100%; height: 100%;
-    z-index: 1;
+    z-index: 0;
     pointer-events: none;
+    mix-blend-mode: screen;
+    filter: blur(0.4px);
+    opacity: 0.85;
   }
   body {
     margin: 0;
