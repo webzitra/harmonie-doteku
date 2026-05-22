@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8" />
+<title>OG · Tantra · Harmonie doteků</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1200px; height: 630px; overflow: hidden; background: #0F0B08; }
+  body { font-family: 'Inter', sans-serif; color: #E8DDC9; position: relative; }
+  .bg {
+    position: absolute; inset: 0;
+    background: url('fotky/foto-2.jpg') center center/cover no-repeat;
+    transform: scale(1.05);
+    filter: brightness(0.7) saturate(1) sepia(0.08);
+  }
+  .overlay {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at center, rgba(15,11,8,0.5) 0%, rgba(15,11,8,0.9) 80%),
+      linear-gradient(180deg, rgba(15,11,8,0.7) 0%, rgba(15,11,8,0.55) 50%, rgba(15,11,8,0.85) 100%);
+  }
+  .glow {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(circle at 50% 55%, rgba(169,96,63,0.18) 0%, transparent 50%);
+  }
+  .frame {
+    position: absolute; inset: 32px;
+    border: 1px solid rgba(169,96,63,0.3);
+    pointer-events: none;
+  }
+  .content {
+    position: relative; z-index: 2;
+    width: 100%; height: 100%;
+    padding: 80px 92px;
+    display: flex; flex-direction: column; justify-content: space-between;
+    text-align: center; align-items: center;
+  }
+  .top {
+    display: flex; align-items: center; gap: 14px;
+  }
+  .top .icon { width: 36px; height: 36px; opacity: 0.85; }
+  .top .wordmark {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 17px;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: rgba(232,221,201,0.78);
+  }
+  .top .wordmark .dot { color: #A9603F; padding: 0 4px; }
+  .main { display: flex; flex-direction: column; gap: 32px; max-width: 980px; align-items: center; }
+  .eyebrow {
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: 0.46em;
+    text-transform: uppercase;
+    color: #A9603F;
+  }
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 92px;
+    line-height: 1.08;
+    letter-spacing: -0.012em;
+    color: #E8DDC9;
+  }
+  h1 em {
+    font-style: italic;
+    color: #A9603F;
+    font-weight: 300;
+  }
+  .sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 24px;
+    color: rgba(232,221,201,0.65);
+    line-height: 1.5;
+    max-width: 680px;
+  }
+  .bottom {
+    display: flex; align-items: center; gap: 22px;
+    font-size: 14px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(232,221,201,0.55);
+  }
+  .bottom .sep { color: #A9603F; opacity: 0.6; }
+  .bottom .url {
+    color: #A9603F;
+    padding: 10px 18px;
+    border: 1px solid rgba(169,96,63,0.4);
+    border-radius: 2px;
+    font-weight: 500;
+  }
+</style>
+</head>
+<body>
+<div class="bg"></div>
+<div class="overlay"></div>
+<div class="glow"></div>
+<div class="frame"></div>
+<div class="content">
+  <div class="top">
+    <svg class="icon" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+      <path d="M 10 56 L 10 32 Q 10 12 32 12 Q 54 12 54 32 L 54 56" fill="none" stroke="#A9603F" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+      <line x1="8" y1="56" x2="56" y2="56" stroke="#A9603F" stroke-width="2.4" stroke-linecap="round"/>
+      <path d="M32 24 C 27 33, 26 41, 29.5 47 Q 32 50.5 34.5 47 C 38 41, 37 33, 32 24 Z" fill="#A9603F"/>
+    </svg>
+    <div class="wordmark">Harmonie<span class="dot">·</span>doteků</div>
+  </div>
+
+  <div class="main">
+    <div class="eyebrow">Vědomá cesta</div>
+    <h1>Tantra je <em>řeč těla</em>,<br />ne technika.</h1>
+    <div class="sub">Pomalé místo k vlastnímu středu — bez výkonu, bez cíle. Klenutý prostor v centru Jihlavy.</div>
+  </div>
+
+  <div class="bottom">
+    <span>Pro muže · ženy · páry</span>
+    <span class="sep">·</span>
+    <span class="url">harmonie-doteku.cz / tantra</span>
+  </div>
+</div>
+</body>
+</html>

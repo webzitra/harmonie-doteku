@@ -1,0 +1,687 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Tantra · Harmonie doteků · Jihlava</title>
+<meta name="description" content="Tantrické masáže od Renáty Altové v klenutém prostoru centra Jihlavy. Pro muže, ženy a páry. Vědomá cesta k vlastní hloubce — diskrétně, bezpečně, etickou cestou." />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://harmonie-doteku.cz/tantra" />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<meta name="theme-color" content="#0F0B08" />
+
+<meta property="og:type" content="article" />
+<meta property="og:locale" content="cs_CZ" />
+<meta property="og:title" content="Tantra · Harmonie doteků · Jihlava" />
+<meta property="og:description" content="Vědomá cesta k vlastní hloubce. Tantrické masáže pro muže, ženy i páry v klenutém prostoru Jihlavy." />
+<meta property="og:image" content="https://harmonie-doteku.cz/og-tantra.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Tantra · Harmonie doteků — Tantra je řeč těla, ne technika. Klenutý prostor v centru Jihlavy." />
+<meta property="og:url" content="https://harmonie-doteku.cz/tantra" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Tantra · Harmonie doteků · Jihlava" />
+<meta name="twitter:description" content="Vědomá cesta k vlastní hloubce. Tantrické masáže pro muže, ženy i páry v klenutém prostoru Jihlavy." />
+<meta name="twitter:image" content="https://harmonie-doteku.cz/og-tantra.jpg" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Cardo:ital,wght@1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+<style>
+  :root {
+    --cave: #0F0B08;
+    --ember: #1E1410;
+    --candle: #C9A36A;
+    --candle-soft: #b08a52;
+    --terracotta: #A9603F;
+    --terracotta-soft: #8d4d31;
+    --linen: #E8DDC9;
+    --sand: #F4ECDD;
+    --bark: #3D2A1F;
+    --smoke: #6E5D4E;
+
+    --serif: 'Cormorant Garamond', serif;
+    --italic: 'Cardo', serif;
+    --sans: 'Inter', system-ui, sans-serif;
+
+    --maxw: 1100px;
+    --gutter: clamp(20px, 4vw, 64px);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  html, body { overflow-x: clip; max-width: 100%; }
+  h1, h2, h3, h4 { text-wrap: balance; }
+  p, .hero-quote, .lead, .col li, .path .lead, .etika li, .etika .lead { text-wrap: pretty; }
+  body {
+    margin: 0;
+    background: var(--cave);
+    color: var(--linen);
+    font-family: var(--sans);
+    font-size: 17px;
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  img { display: block; max-width: 100%; height: auto; }
+  a { color: inherit; text-decoration: none; }
+  ::selection { background: var(--terracotta); color: var(--linen); }
+
+  /* ====== NAV ====== */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+    padding: 22px var(--gutter);
+    display: flex; align-items: center; justify-content: space-between;
+    background: linear-gradient(to bottom, rgba(15,11,8,0.6) 0%, rgba(15,11,8,0) 100%);
+    transition: background 400ms ease, padding 400ms ease;
+  }
+  nav.scrolled { background: rgba(15,11,8,0.94); padding: 14px var(--gutter); }
+  .brand {
+    font-family: var(--serif); font-weight: 400;
+    font-size: 19px; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--linen);
+  }
+  .brand .dot { color: var(--terracotta); }
+  .nav-back {
+    font-family: var(--sans); font-weight: 500;
+    font-size: 12px; letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--linen); opacity: 0.7;
+    display: inline-flex; align-items: center; gap: 8px;
+    transition: opacity 200ms, color 200ms;
+  }
+  .nav-back:hover { opacity: 1; color: var(--terracotta); }
+
+  /* ====== HERO ====== */
+  .hero {
+    position: relative;
+    min-height: 100vh; min-height: 100svh;
+    overflow: hidden;
+    display: flex; align-items: center;
+    padding: 0 var(--gutter);
+    color: var(--linen);
+  }
+  .hero::after {
+    content: '';
+    position: absolute; left: 0; right: 0; bottom: -1px;
+    height: 200px; z-index: 1; pointer-events: none;
+    background: linear-gradient(to bottom, transparent 0%, var(--ember) 100%);
+  }
+  .hero-img {
+    position: absolute; inset: 0;
+    background: url('fotky/foto-2.jpg') center/cover no-repeat;
+    animation: tantra-zoom 36s ease-in-out infinite alternate;
+    transform-origin: 48% 52%;
+    will-change: transform;
+  }
+  @keyframes tantra-zoom {
+    0%   { transform: scale(1.04); }
+    100% { transform: scale(1.22) translate(2%, 1%); }
+  }
+  .hero-overlay {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at center, rgba(15,11,8,0.4) 0%, rgba(15,11,8,0.78) 80%),
+      linear-gradient(180deg, rgba(15,11,8,0.5) 0%, rgba(15,11,8,0.6) 100%);
+  }
+  .hero-content {
+    position: relative; z-index: 2;
+    max-width: 880px; margin: 0 auto; text-align: center;
+  }
+  .hero-eyebrow {
+    font-family: var(--sans); font-weight: 500;
+    font-size: 12px; letter-spacing: 0.36em;
+    text-transform: uppercase; color: var(--terracotta);
+    margin-bottom: 36px;
+    opacity: 0; transform: translateY(20px);
+    animation: rise 1400ms 400ms ease forwards;
+  }
+  .hero h1 {
+    font-family: var(--serif); font-weight: 300;
+    font-size: clamp(38px, 6vw, 78px); line-height: 1.18;
+    letter-spacing: -0.012em;
+    margin: 0 0 36px;
+    color: var(--linen);
+    opacity: 0; transform: translateY(28px);
+    animation: rise 1600ms 700ms ease forwards;
+  }
+  .hero h1 em { font-style: italic; color: var(--terracotta); font-weight: 300; }
+  .hero-quote {
+    font-family: var(--italic); font-style: italic;
+    font-size: clamp(16px, 1.4vw, 19px);
+    color: rgba(232,221,201,0.7);
+    max-width: 520px; margin: 0 auto;
+    opacity: 0; transform: translateY(20px);
+    animation: rise 1600ms 1100ms ease forwards;
+  }
+  .scroll-cue {
+    position: absolute;
+    bottom: 36px; left: 50%; transform: translateX(-50%);
+    font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase;
+    color: rgba(169,96,63,0.7);
+    z-index: 2;
+    display: flex; flex-direction: column; align-items: center; gap: 16px;
+    animation: bob 2.8s ease-in-out infinite;
+  }
+  .scroll-cue::after { content: ''; width: 1px; height: 36px; background: linear-gradient(to bottom, var(--terracotta), transparent); }
+  @keyframes bob { 0%, 100% { transform: translate(-50%, 0); } 50% { transform: translate(-50%, 8px); } }
+  @keyframes rise { to { opacity: 1; transform: translateY(0); } }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-img { animation: none; }
+    .hero-eyebrow, .hero h1, .hero-quote { animation: none; opacity: 1; transform: none; }
+    .scroll-cue { animation: none; }
+  }
+
+  /* ====== SECTIONS ====== */
+  section { padding: clamp(80px, 12vh, 160px) var(--gutter); }
+  .wrap { max-width: var(--maxw); margin: 0 auto; }
+  .eyebrow {
+    font-weight: 500; font-size: 12px; letter-spacing: 0.32em;
+    text-transform: uppercase; color: var(--terracotta);
+    margin-bottom: 22px;
+  }
+  h2 {
+    font-family: var(--serif); font-weight: 300;
+    font-size: clamp(32px, 4.5vw, 56px); line-height: 1.12;
+    letter-spacing: -0.012em;
+    color: var(--linen);
+    margin: 0 0 32px;
+  }
+  h2 em { font-style: italic; color: var(--terracotta); font-weight: 300; }
+  p { font-size: 17px; line-height: 1.8; color: rgba(232,221,201,0.82); margin: 0 0 18px; }
+  h3 {
+    font-family: var(--serif); font-weight: 400;
+    font-size: 26px; line-height: 1.2; color: var(--linen);
+    margin: 0 0 14px;
+  }
+  blockquote {
+    font-family: var(--italic); font-style: italic;
+    font-size: clamp(22px, 2.4vw, 32px); line-height: 1.4;
+    color: var(--linen); max-width: 780px; margin: 0 auto;
+    padding: clamp(40px, 6vh, 80px) 0;
+    text-align: center;
+    border-top: 1px solid rgba(169,96,63,0.25);
+    border-bottom: 1px solid rgba(169,96,63,0.25);
+    quotes: "\201E" "\201C";
+  }
+  blockquote::before { content: open-quote; color: var(--terracotta); margin-right: 4px; }
+  blockquote::after { content: close-quote; color: var(--terracotta); margin-left: 4px; }
+  blockquote cite {
+    display: block; margin-top: 24px;
+    font-family: var(--sans); font-style: normal;
+    font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--smoke);
+  }
+
+  /* ====== IS / ISN'T ====== */
+  .is-isnt { background: var(--ember); }
+  .is-isnt .grid2 {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: clamp(40px, 5vw, 72px);
+    max-width: 980px; margin: 0 auto;
+  }
+  .is-isnt .col h3 {
+    color: var(--linen); margin-bottom: 28px;
+    padding-bottom: 18px; border-bottom: 1px solid rgba(169,96,63,0.4);
+  }
+  .is-isnt .col h3 em { font-style: italic; }
+  .is-isnt .col.is h3 em { color: var(--terracotta); }
+  .is-isnt .col.isnt h3 em { color: var(--smoke); }
+  .is-isnt .col ul { list-style: none; margin: 0; padding: 0; }
+  .is-isnt .col li {
+    font-size: 16px; line-height: 1.65;
+    padding: 14px 0; padding-left: 26px; position: relative;
+    color: rgba(232,221,201,0.82);
+    border-bottom: 1px dashed rgba(232,221,201,0.1);
+  }
+  .is-isnt .col.is li::before {
+    content: '✦'; position: absolute; left: 0; top: 14px;
+    color: var(--terracotta); font-size: 12px;
+  }
+  .is-isnt .col.isnt li::before {
+    content: '×'; position: absolute; left: 0; top: 11px;
+    color: var(--smoke); font-size: 18px;
+  }
+  @media (max-width: 700px) {
+    .is-isnt .grid2 { grid-template-columns: 1fr; gap: 48px; }
+  }
+
+  /* ====== PRO KOHO ====== */
+  .pro-koho { background: var(--cave); }
+  .pro-koho .header { text-align: center; max-width: 760px; margin: 0 auto clamp(50px, 7vh, 90px); }
+  .paths { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .path {
+    background: var(--ember);
+    border: 1px solid rgba(169,96,63,0.2);
+    border-radius: 2px;
+    padding: 40px 32px;
+    display: flex; flex-direction: column; gap: 20px;
+    transition: border-color 300ms, transform 400ms;
+  }
+  .path:hover { border-color: var(--terracotta); transform: translateY(-4px); }
+  .path .meta-eyebrow {
+    font-weight: 500; font-size: 11px; letter-spacing: 0.32em;
+    text-transform: uppercase; color: var(--terracotta);
+  }
+  .path h3 { color: var(--linen); margin: 0; }
+  .path .lead {
+    font-size: 14.5px; color: rgba(232,221,201,0.68);
+    line-height: 1.7; margin: 0; flex: 1;
+  }
+  .path .prices { margin-top: 18px; }
+  .path .price-line {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding: 9px 0;
+    border-bottom: 1px dashed rgba(169,96,63,0.18);
+    font-size: 14px;
+  }
+  .path .price-line:last-child { border-bottom: none; }
+  .path .price-line .min { color: rgba(232,221,201,0.6); }
+  .path .price-line .czk { font-family: var(--serif); font-style: italic; color: var(--terracotta); font-size: 16px; }
+  .path .extra {
+    font-size: 12px; color: rgba(232,221,201,0.5);
+    padding-top: 14px; margin-top: 8px;
+    border-top: 1px solid rgba(169,96,63,0.18);
+    letter-spacing: 0.06em;
+  }
+  .path.couples {
+    background: linear-gradient(160deg, rgba(169,96,63,0.18) 0%, var(--ember) 100%);
+    border-color: rgba(169,96,63,0.4);
+  }
+  @media (max-width: 800px) { .paths { grid-template-columns: 1fr; } }
+
+  .transformation {
+    margin-top: clamp(40px, 5vh, 64px);
+    text-align: center;
+    background: var(--ember);
+    border: 1px solid rgba(169,96,63,0.3);
+    padding: 40px 36px;
+    border-radius: 2px;
+  }
+  .transformation .meta-eyebrow { color: var(--terracotta); font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase; font-weight: 500; }
+  .transformation h3 { margin: 12px 0 8px; }
+  .transformation .czk { font-family: var(--serif); font-style: italic; color: var(--terracotta); font-size: 22px; }
+
+  /* ====== RITUÁL / ETIKA ====== */
+  .etika { background: var(--ember); }
+  .etika .wrap { max-width: 760px; }
+  .etika .lead { font-size: 18px; color: rgba(232,221,201,0.86); margin-bottom: 36px; }
+  .etika h3 { color: var(--terracotta); font-style: italic; font-weight: 400; margin-top: 32px; }
+  .etika ul { list-style: none; padding: 0; margin: 0 0 18px; }
+  .etika li {
+    padding: 8px 0 8px 28px; position: relative;
+    color: rgba(232,221,201,0.82); font-size: 16px; line-height: 1.65;
+  }
+  .etika li::before {
+    content: '—'; position: absolute; left: 0;
+    color: var(--terracotta);
+  }
+
+  /* ====== KUNDALINI ====== */
+  .kundalini { background: var(--cave); border-top: 1px solid rgba(169,96,63,0.15); }
+  .kundalini .grid2 {
+    display: grid; grid-template-columns: 1.2fr 1fr;
+    gap: clamp(48px, 6vw, 96px); align-items: center;
+  }
+  .kundalini .visual {
+    aspect-ratio: 4/5; overflow: hidden; border-radius: 2px;
+    background: var(--ember);
+  }
+  .kundalini .visual img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.92); }
+  .kundalini .meta-eyebrow { color: var(--terracotta); font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase; font-weight: 500; }
+  .kundalini .price-row {
+    margin-top: 28px; padding-top: 22px;
+    border-top: 1px solid rgba(169,96,63,0.25);
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-size: 14px; letter-spacing: 0.08em;
+  }
+  .kundalini .price-row .czk { font-family: var(--serif); font-style: italic; color: var(--terracotta); font-size: 22px; }
+  @media (max-width: 800px) { .kundalini .grid2 { grid-template-columns: 1fr; } }
+
+  /* ====== QUOTE ====== */
+  .pull-quote-section { background: var(--cave); padding: clamp(40px, 6vh, 80px) var(--gutter); }
+  .pull-quote-section blockquote { border: none; padding: 0; }
+
+  /* ====== KONTAKT TANTRA ====== */
+  .kontakt-tantra {
+    background: linear-gradient(180deg, var(--cave) 0%, var(--ember) 100%);
+    text-align: center;
+  }
+  .kontakt-tantra .wrap { max-width: 680px; }
+  .kontakt-tantra .eyebrow { color: var(--terracotta); text-align: center; }
+  .kontakt-tantra h2 { text-align: center; }
+  .kontakt-tantra p { text-align: center; color: rgba(232,221,201,0.78); margin-bottom: 20px; }
+  .kontakt-tantra .contact-lines {
+    margin-top: 44px;
+    display: flex; flex-direction: column; gap: 18px;
+    align-items: center;
+  }
+  .kontakt-tantra .contact-lines a {
+    color: var(--linen);
+    font-family: var(--serif); font-size: 22px; font-weight: 400;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(169,96,63,0.35);
+    transition: color 200ms, border-color 200ms;
+  }
+  .kontakt-tantra .contact-lines a:hover { color: var(--terracotta); border-color: var(--terracotta); }
+  .kontakt-tantra .note {
+    margin-top: 44px;
+    font-family: var(--italic); font-style: italic;
+    font-size: 15px; color: rgba(232,221,201,0.55);
+  }
+
+  /* ====== FOOTER ====== */
+  footer {
+    background: var(--ember);
+    border-top: 1px solid rgba(169,96,63,0.18);
+    padding: clamp(50px, 6vh, 80px) var(--gutter) 30px;
+    color: rgba(232,221,201,0.55);
+    font-size: 13px;
+    letter-spacing: 0.04em;
+  }
+  footer .wrap {
+    max-width: var(--maxw); margin: 0 auto;
+    display: grid; grid-template-columns: 1.4fr 1fr 1fr;
+    gap: clamp(30px, 4vw, 60px);
+    padding-bottom: 36px;
+    border-bottom: 1px solid rgba(169,96,63,0.15);
+  }
+  footer .brand-foot {
+    font-family: var(--serif); font-size: 22px;
+    color: var(--terracotta); letter-spacing: 0.12em;
+    margin-bottom: 12px; text-transform: uppercase;
+  }
+  footer .brand-foot .dot { color: var(--linen); opacity: 0.55; }
+  footer .col h4 {
+    font-size: 11.5px; letter-spacing: 0.24em; text-transform: uppercase;
+    color: var(--terracotta); margin: 0 0 16px; font-weight: 500;
+  }
+  footer .col a { display: block; padding: 4px 0; opacity: 0.75; transition: opacity 200ms, color 200ms; }
+  footer .col a:hover { opacity: 1; color: var(--terracotta); }
+  footer .col .small { font-size: 13px; line-height: 1.6; margin-bottom: 6px; }
+  footer .meta {
+    max-width: var(--maxw); margin: 26px auto 0;
+    display: flex; justify-content: space-between; align-items: center;
+    gap: 20px;
+    font-size: 11.5px; opacity: 0.65; letter-spacing: 0.1em; flex-wrap: wrap;
+  }
+  @media (max-width: 800px) { footer .wrap { grid-template-columns: 1fr; gap: 36px; } }
+
+  /* reveal */
+  .reveal { opacity: 0; transform: translateY(36px); transition: opacity 1000ms ease, transform 1000ms ease; }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+  @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="/" class="nav-back">← Zpět na hlavní</a>
+  <a href="/" class="brand">Harmonie<span class="dot">·</span>doteků</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-img" aria-hidden="true"></div>
+  <div class="hero-overlay" aria-hidden="true"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Vědomá cesta</div>
+    <h1>Tantra je <em>řeč těla</em>,<br />ne technika.</h1>
+    <p class="hero-quote">Pomalé místo k vlastnímu středu — bez výkonu, bez cíle. Klenutý prostor, dech, vědomý dotek.</p>
+  </div>
+  <div class="scroll-cue" aria-hidden="true">níž</div>
+</section>
+
+<!-- IS / ISN'T -->
+<section class="is-isnt reveal">
+  <div class="wrap" style="max-width: 1000px;">
+    <div class="header" style="text-align: center; max-width: 720px; margin: 0 auto clamp(50px, 6vh, 80px);">
+      <div class="eyebrow">Než přijdete</div>
+      <h2>Co tantra u mě <em>je</em> a co <em style="color: var(--smoke);">není</em></h2>
+    </div>
+    <div class="grid2">
+      <div class="col is">
+        <h3>Tantra u mě <em>je</em></h3>
+        <ul>
+          <li>Pomalá, vědomá práce s tělem a dechem.</li>
+          <li>Otevírání citlivosti, kterou v běžném životě nikdo nesahá.</li>
+          <li>Bezpečný prostor s jasnými hranicemi a souhlasem.</li>
+          <li>Cesta k vlastnímu středu, ne k druhému člověku.</li>
+          <li>Možnost setkat se sebou bez výkonu, ostudu, hodnocení.</li>
+        </ul>
+      </div>
+      <div class="col isnt">
+        <h3>Tantra u mě <em>není</em></h3>
+        <ul>
+          <li>Erotická služba ani sexuální setkání.</li>
+          <li>Rychlá zkušenost na objednávku, bez konzultace.</li>
+          <li>Tlak na výkon, otevřenost nebo „pokrok".</li>
+          <li>Léčba traumatu — pokud řešíte hluboké rány, doporučím terapeuta.</li>
+          <li>Náhrada partnerského vztahu nebo intimity s blízkým.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRO KOHO -->
+<section class="pro-koho reveal">
+  <div class="wrap">
+    <div class="header">
+      <div class="eyebrow" style="text-align: center;">Pro koho</div>
+      <h2 style="text-align: center;">Tři <em>cesty</em></h2>
+      <p style="text-align: center; max-width: 560px; margin: 0 auto;">Tantra pro muže, ženy a páry. Délka i hloubka roste s časem — první sezení je vždy úvodní.</p>
+    </div>
+
+    <div class="paths">
+      <div class="path">
+        <div class="meta-eyebrow">Muži</div>
+        <h3>Pro muže</h3>
+        <p class="lead">Otevírání citlivosti za hranicí výkonu. Pomalý dotek, který učí tělo poslouchat dech místo cíle.</p>
+        <div class="prices">
+          <div class="price-line"><span class="min">90 minut</span><span class="czk">3 500 Kč</span></div>
+          <div class="price-line"><span class="min">120 minut</span><span class="czk">4 300 Kč</span></div>
+          <div class="price-line"><span class="min">150 minut</span><span class="czk">5 100 Kč</span></div>
+          <div class="price-line"><span class="min">180 minut</span><span class="czk">5 900 Kč</span></div>
+        </div>
+        <div class="extra">+ 30 min navíc · 800 Kč</div>
+      </div>
+
+      <div class="path">
+        <div class="meta-eyebrow">Ženy</div>
+        <h3>Pro ženy</h3>
+        <p class="lead">Návrat do těla, do vlastní vůně, do vlastní zemskosti. Pro chvíle, kdy se chcete obejmout vy samy.</p>
+        <div class="prices">
+          <div class="price-line"><span class="min">90 minut</span><span class="czk">3 000 Kč</span></div>
+          <div class="price-line"><span class="min">120 minut</span><span class="czk">3 800 Kč</span></div>
+          <div class="price-line"><span class="min">150 minut</span><span class="czk">4 600 Kč</span></div>
+          <div class="price-line"><span class="min">180 minut</span><span class="czk">5 400 Kč</span></div>
+        </div>
+        <div class="extra">+ 30 min navíc · 800 Kč</div>
+      </div>
+
+      <div class="path couples">
+        <div class="meta-eyebrow">Páry</div>
+        <h3>Pro páry</h3>
+        <p class="lead">Společný rituál pro dva, kteří chtějí prohloubit kontakt. Vedu vás obě těla, ne jenom jedno.</p>
+        <div class="prices">
+          <div class="price-line"><span class="min">90 minut</span><span class="czk">6 000 Kč</span></div>
+          <div class="price-line"><span class="min">120 minut</span><span class="czk">7 600 Kč</span></div>
+          <div class="price-line"><span class="min">150 minut</span><span class="czk">9 200 Kč</span></div>
+          <div class="price-line"><span class="min">180 minut</span><span class="czk">10 800 Kč</span></div>
+        </div>
+        <div class="extra">+ 30 min navíc · 1 600 Kč</div>
+      </div>
+    </div>
+
+    <div class="transformation">
+      <div class="meta-eyebrow">Transformace páru</div>
+      <h3>Celodenní rituál pro dva</h3>
+      <p style="text-align: center; max-width: 540px; margin: 12px auto 16px; font-size: 15.5px;">Čtyři hodiny pomalé práce, ticho mezi vámi, společné dýchání, jídlo, doteky. Pro významné mezníky vztahu.</p>
+      <div><span style="font-family: var(--sans); font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(232,221,201,0.5);">240 minut · </span><span class="czk">10 500 Kč</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ETIKA / RITUÁL -->
+<section class="etika reveal">
+  <div class="wrap">
+    <div class="eyebrow">Rituál & etika</div>
+    <h2>Jak vypadá <em>setkání</em></h2>
+    <p class="lead">Pracuji v rámci tantrické tradice s jasnými etickými hranicemi. Žádné překvapení, žádný tlak. Vaše tělo zůstává vaše tělo po celou dobu.</p>
+
+    <h3>Před setkáním</h3>
+    <ul>
+      <li>Krátký telefonický rozhovor — kdo jste, co potřebujete, otázky bez tabu.</li>
+      <li>Společně domluvíme rámec: čeho se chcete dotknout, čeho ne.</li>
+      <li>Termín si rezervujeme až poté, co máte všechno jasno.</li>
+    </ul>
+
+    <h3>Během setkání</h3>
+    <ul>
+      <li>Začínáme ve vší stručnosti — dech, pomalé uložení, naladění.</li>
+      <li>Pracuji s celým tělem; intimní oblasti pouze tam, kde si přejete, a vždy s prošeptaným souhlasem.</li>
+      <li>Tempo určujete vy. Slova „víc", „méně", „dost" platí okamžitě a bez vysvětlování.</li>
+      <li>Nahota není podmínkou. Pracuji i s plně oblečeným tělem, pokud je to vaše hranice.</li>
+    </ul>
+
+    <h3>Po setkání</h3>
+    <ul>
+      <li>Doznění v tichu, čaj, čas vrátit se zpátky.</li>
+      <li>Pokud potřebujete, krátká reflexe. Žádné psychologické rozbory.</li>
+      <li>Nikoho neoslovuji, dokud se sami neozvete. Diskrétnost samozřejmá.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- KUNDALINI -->
+<section class="kundalini reveal">
+  <div class="wrap">
+    <div class="grid2">
+      <div>
+        <div class="meta-eyebrow">Facilitace</div>
+        <h2 style="margin-top: 14px;">Kundalini <em>Awakening</em></h2>
+        <p>Kundalini je jméno pro hluboce vnitřní energetickou cestu, která je v každém těle přítomná — většinu života spí. Probuzení je proces, ne událost.</p>
+        <p>Sezení vede skrz dech, pomalý dotek a tichá meditativní místa. Není to masáž — je to facilitace toho, co se má dít. Vždy v rámci, který je pro vás bezpečný.</p>
+        <p style="color: rgba(232,221,201,0.6); font-size: 15px;">Doporučuji až poté, co máte za sebou alespoň jedno tantrické setkání. Tělo by mělo být na tento typ práce naladěné.</p>
+        <div class="price-row">
+          <span style="color: rgba(232,221,201,0.55); font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase;">90 minut</span>
+          <span class="czk">2 000 Kč</span>
+        </div>
+      </div>
+      <div class="visual">
+        <img src="fotky/foto-11.jpg" alt="Buddha socha se svícny — kundalini prostor" loading="lazy" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PULL QUOTE -->
+<section class="pull-quote-section reveal">
+  <div class="wrap">
+    <blockquote>
+      Tělo zná víc, než si myslíte. Doteky jsou jen způsob, jak mu dát čas to říct.
+      <cite>— Margot Anand · The Art of Sexual Ecstasy</cite>
+    </blockquote>
+  </div>
+</section>
+
+<!-- KONTAKT TANTRA -->
+<section class="kontakt-tantra reveal" id="kontakt">
+  <div class="wrap">
+    <div class="eyebrow">Rezervace</div>
+    <h2>Domluvíme se <em>v hovoru</em></h2>
+    <p>Tantrický termín se nerezervuje formulářem. Vždy si nejdřív krátce zavoláme — abychom oba věděli, co je v rámci a co ne.</p>
+    <p>Nemusíte mít „dotazy". Stačí říct, co vás přivedlo.</p>
+
+    <div class="contact-lines">
+      <a href="tel:+420725433655">+420 725 433 655</a>
+      <a href="mailto:harmoniedoteku.masaze@gmail.com">harmoniedoteku.masaze@gmail.com</a>
+    </div>
+
+    <div class="note">Volám zpátky obvykle do 4 hodin v otevírací době. Diskrétnost samozřejmá.</div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <div class="brand-foot">Harmonie<span class="dot">·</span>doteků</div>
+      <div class="small">Klenutý prostor v srdci Jihlavy. Tantra, kundalíni, sportovní, lymfatická i relaxační masáže — od Renáty Altové.</div>
+    </div>
+    <div class="col">
+      <h4>Stránky</h4>
+      <a href="/">Hlavní</a>
+      <a href="/#masaze">Masáže</a>
+      <a href="/tantra">Tantra</a>
+      <a href="/#o-mne">O mně</a>
+      <a href="/#kontakt">Kontakt</a>
+    </div>
+    <div class="col">
+      <h4>Kontakt</h4>
+      <div class="small">Matky Boží 1205/2<br />586 01 Jihlava</div>
+      <a href="tel:+420725433655">+420 725 433 655</a>
+      <a href="mailto:harmoniedoteku.masaze@gmail.com">harmoniedoteku.masaze@gmail.com</a>
+      <div class="small" style="margin-top:12px;">Po – Ne · 8:00 – 20:00</div>
+    </div>
+  </div>
+  <div class="meta">
+    <div>© 2026 Renáta Altová · Harmonie doteků</div>
+    <div>Draft · 2026-05-22 · WebZítra studio</div>
+  </div>
+</footer>
+
+<script>
+  // Smooth anchor jumps
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', (e) => {
+      const id = a.getAttribute('href').slice(1);
+      if (!id) return;
+      const target = document.getElementById(id);
+      if (!target) return;
+      e.preventDefault();
+      const top = target.getBoundingClientRect().top + window.scrollY - 32;
+      window.scrollTo({ top, behavior: 'smooth' });
+    });
+  });
+
+  // Czech sirotčí slova
+  (function fixOrphans() {
+    const ONE = /(\s)([aiouvskzAIOUVSKZ])\s/g;
+    const TWO = /(\s)(na|do|ve|se|po|od|za|ze|že|už|si|ji|jí|mu|mě|ti|ty|to|tu|ten|tak|jen|již|jak)\s/g;
+    function walk(node) {
+      if (node.nodeType === 3) {
+        let t = node.textContent;
+        if (!t || t.length < 4) return;
+        let n = t.replace(ONE, '$1$2 ').replace(TWO, '$1$2 ');
+        if (n !== t) node.textContent = n;
+      } else if (node.nodeType === 1) {
+        const tag = node.tagName;
+        if (tag === 'SCRIPT' || tag === 'STYLE' || tag === 'CODE' || tag === 'PRE') return;
+        node.childNodes.forEach(walk);
+      }
+    }
+    walk(document.body);
+  })();
+
+  const nav = document.getElementById('nav');
+  function onScroll() {
+    if ((window.scrollY || 0) > 60) nav.classList.add('scrolled'); else nav.classList.remove('scrolled');
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>

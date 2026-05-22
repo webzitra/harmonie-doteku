@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <radialGradient id="halo" cx="50%" cy="58%" r="45%">
+      <stop offset="0%" stop-color="#C9A36A" stop-opacity="0.45"/>
+      <stop offset="55%" stop-color="#C9A36A" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#0F0B08" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="flame" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#E8DDC9"/>
+      <stop offset="55%" stop-color="#C9A36A"/>
+      <stop offset="100%" stop-color="#A9603F"/>
+    </linearGradient>
+  </defs>
+
+  <!-- background -->
+  <rect width="64" height="64" rx="10" fill="#0F0B08"/>
+
+  <!-- candle ambient halo -->
+  <circle cx="32" cy="40" r="22" fill="url(#halo)"/>
+
+  <!-- vault arch (klenba) -->
+  <path d="M 10 56 L 10 32 Q 10 12 32 12 Q 54 12 54 32 L 54 56"
+        fill="none" stroke="#C9A36A" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+
+  <!-- floor / base line -->
+  <line x1="8" y1="56" x2="56" y2="56" stroke="#C9A36A" stroke-width="2.6" stroke-linecap="round"/>
+
+  <!-- flame body (under the arch) -->
+  <path d="M32 24 C 27 33, 26 41, 29.5 47 Q 32 50.5 34.5 47 C 38 41, 37 33, 32 24 Z"
+        fill="url(#flame)"/>
+
+  <!-- flame inner highlight -->
+  <path d="M32 32 C 30 37, 29.5 43, 31 46 Q 32 47.6 33 46 C 34.5 43, 34 37, 32 32 Z"
+        fill="#F4ECDD" opacity="0.78"/>
+</svg>

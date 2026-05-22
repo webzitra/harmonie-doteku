@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://harmonie-doteku.cz/</loc>
+    <lastmod>2026-05-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://harmonie-doteku.cz/fotky/foto-1.jpg</image:loc>
+      <image:caption>Klenutá místnost s futonem — Harmonie doteků Jihlava</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://harmonie-doteku.cz/fotky/foto-2.jpg</image:loc>
+      <image:caption>Klenutá místnost s makramé a lucernami</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://harmonie-doteku.cz/fotky/foto-8.jpg</image:loc>
+      <image:caption>Masážní stůl pod klenutým výklenkem</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://harmonie-doteku.cz/tantra</loc>
+    <lastmod>2026-05-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+</urlset>

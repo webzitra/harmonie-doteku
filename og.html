@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8" />
+<title>OG · Harmonie doteků</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1200px; height: 630px; overflow: hidden; background: #0F0B08; }
+  body {
+    font-family: 'Inter', sans-serif;
+    color: #E8DDC9;
+    position: relative;
+  }
+  .bg {
+    position: absolute; inset: 0;
+    background: url('fotky/foto-1.jpg') center 35%/cover no-repeat;
+    transform: scale(1.05);
+    filter: brightness(0.78) saturate(1.05);
+  }
+  .overlay {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 28% 50%, rgba(15,11,8,0.4) 0%, rgba(15,11,8,0.85) 75%),
+      linear-gradient(120deg, rgba(15,11,8,0.85) 0%, rgba(15,11,8,0.35) 55%, rgba(15,11,8,0.6) 100%);
+  }
+  .grain {
+    position: absolute; inset: 0;
+    background-image:
+      radial-gradient(circle at 50% 65%, rgba(201,163,106,0.16) 0%, transparent 55%);
+    mix-blend-mode: screen;
+  }
+  .frame {
+    position: absolute; inset: 32px;
+    border: 1px solid rgba(201,163,106,0.25);
+    pointer-events: none;
+  }
+  .content {
+    position: relative; z-index: 2;
+    width: 100%; height: 100%;
+    padding: 80px 92px;
+    display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .top {
+    display: flex; align-items: center; gap: 16px;
+  }
+  .top .icon {
+    width: 44px; height: 44px;
+  }
+  .top .wordmark {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 20px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #E8DDC9;
+  }
+  .top .wordmark .dot { color: #C9A36A; padding: 0 4px; }
+  .main { display: flex; flex-direction: column; gap: 28px; max-width: 920px; }
+  .eyebrow {
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: #C9A36A;
+  }
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 96px;
+    line-height: 1.04;
+    letter-spacing: -0.015em;
+    color: #E8DDC9;
+  }
+  h1 em {
+    font-style: italic;
+    color: #C9A36A;
+    font-weight: 300;
+  }
+  .sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 26px;
+    color: rgba(232,221,201,0.72);
+    line-height: 1.4;
+    max-width: 760px;
+    margin-top: 8px;
+  }
+  .bottom {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 24px;
+  }
+  .meta-row {
+    display: flex; align-items: center; gap: 22px;
+    font-size: 16px;
+    color: rgba(232,221,201,0.72);
+    letter-spacing: 0.08em;
+  }
+  .meta-row .sep {
+    color: #C9A36A;
+    opacity: 0.55;
+  }
+  .meta-row strong {
+    color: #E8DDC9;
+    font-weight: 500;
+  }
+  .url {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #C9A36A;
+    padding: 10px 18px;
+    border: 1px solid rgba(201,163,106,0.35);
+    border-radius: 2px;
+  }
+</style>
+</head>
+<body>
+<div class="bg"></div>
+<div class="overlay"></div>
+<div class="grain"></div>
+<div class="frame"></div>
+<div class="content">
+  <div class="top">
+    <svg class="icon" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="og-halo" cx="50%" cy="58%" r="45%">
+          <stop offset="0%" stop-color="#C9A36A" stop-opacity="0.55"/>
+          <stop offset="60%" stop-color="#C9A36A" stop-opacity="0.1"/>
+          <stop offset="100%" stop-color="#0F0B08" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <circle cx="32" cy="40" r="22" fill="url(#og-halo)"/>
+      <path d="M 10 56 L 10 32 Q 10 12 32 12 Q 54 12 54 32 L 54 56" fill="none" stroke="#C9A36A" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+      <line x1="8" y1="56" x2="56" y2="56" stroke="#C9A36A" stroke-width="2.6" stroke-linecap="round"/>
+      <path d="M32 24 C 27 33, 26 41, 29.5 47 Q 32 50.5 34.5 47 C 38 41, 37 33, 32 24 Z" fill="#C9A36A"/>
+      <path d="M32 32 C 30 37, 29.5 43, 31 46 Q 32 47.6 33 46 C 34.5 43, 34 37, 32 32 Z" fill="#F4ECDD" opacity="0.78"/>
+    </svg>
+    <div class="wordmark">Harmonie<span class="dot">·</span>doteků</div>
+  </div>
+
+  <div class="main">
+    <div class="eyebrow">Masáže · Jihlava</div>
+    <h1>Místo, kde se <em>dotek</em><br />stává řečí.</h1>
+    <div class="sub">Klenutý prostor v srdci historického města. Tantra, kundalíni, sportovní, lymfatická a relaxační masáže.</div>
+  </div>
+
+  <div class="bottom">
+    <div class="meta-row">
+      <strong>Renáta Altová</strong>
+      <span class="sep">·</span>
+      <span>Matky Boží 1205</span>
+      <span class="sep">·</span>
+      <span>4,8 ★</span>
+    </div>
+    <div class="url">harmonie-doteku.cz</div>
+  </div>
+</div>
+</body>
+</html>
