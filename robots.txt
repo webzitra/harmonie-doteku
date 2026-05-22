@@ -1,6 +1,21 @@
 User-agent: *
 Allow: /
-Disallow: /admin
 Disallow: /api
+Disallow: /admin
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /fotky/
+Allow: /og.jpg
+Allow: /og-tantra.jpg
+Allow: /favicon.svg
+
+User-agent: SeznamBot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
 
 Sitemap: https://harmonie-doteku.cz/sitemap.xml
