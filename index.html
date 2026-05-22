@@ -443,6 +443,38 @@
     .hero-eyebrow, .hero h1, .hero-sub, .hero-ctas { animation: none; opacity: 1; transform: none; }
     .scroll-cue { animation: none; }
   }
+  @media (max-width: 600px) {
+    .hero { padding: 0 22px clamp(90px, 14vh, 130px); }
+    .hero-eyebrow { font-size: 11px; letter-spacing: 0.26em; margin-bottom: 24px; }
+    .hero h1 { font-size: clamp(42px, 12vw, 58px); line-height: 1.14; margin: 0 0 24px; }
+    .hero-sub { font-size: 15px; line-height: 1.6; max-width: 100%; margin-bottom: 36px; }
+    .hero-ctas {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 12px;
+      width: 100%;
+      max-width: 340px;
+    }
+    .btn-primary {
+      text-align: center;
+      padding: 16px 24px;
+      font-size: 12px;
+      letter-spacing: 0.18em;
+    }
+    .btn-ghost {
+      text-align: center;
+      padding: 15px 24px;
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      border: 1px solid rgba(232,221,201,0.22);
+      border-bottom-width: 1px;
+      padding-bottom: 15px;
+      border-radius: 2px;
+    }
+    .btn-ghost:hover { border-color: var(--candle); }
+    .scroll-cue { bottom: 22px; font-size: 10px; letter-spacing: 0.28em; }
+    .scroll-cue::after { height: 26px; }
+  }
 
   /* ====== EYEBROW STRIP ====== */
   .strip {
