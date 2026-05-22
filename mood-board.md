@@ -1,6 +1,6 @@
 # Harmonie doteků — Mood board
 
-**Klient:** Renáta Altová · Matky Boží 1205/2, Jihlava (historické centrum)
+**Klient:** Renata Altová · Matky Boží 1205/2, Jihlava (historické centrum)
 **Stávající web:** harmonie-doteku.netlify.app (předělat — vibe nesedí)
 **Reputace:** 4,8 ★ / 9 recenzí (Firmy.cz, Slevomat)
 **Date:** 2026-05-22
@@ -121,7 +121,7 @@ Co **nepoužívat:**
 - **Asymetrie** — necentrovat všechno; klenba je oblouk, ne čára
 - **Velký whitespace** — sekce dýchají, ne stěnové bloky
 - **Animace minimal** — slow fade-in, mírný parallax na hero, scroll-triggered reveal. Žádné letící elementy.
-- **Mobil first** — Renáta určitě dostává polovinu trafficu z mapy.com / firmy.cz na mobil
+- **Mobil first** — Renata určitě dostává polovinu trafficu z mapy.com / firmy.cz na mobil
 
 ---
 

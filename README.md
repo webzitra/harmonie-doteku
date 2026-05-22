@@ -1,6 +1,6 @@
 # Harmonie doteků
 
-Statický web pro **Renátu Altovou** — masérka v klenutém prostoru centra Jihlavy.
+Statický web pro **Renatu Altovou** — masérka v klenutém prostoru centra Jihlavy.
 
 - **Lokace:** Matky Boží 1205/2, 586 01 Jihlava
 - **Kontakt:** +420 725 433 655 · harmoniedoteku.masaze@gmail.com

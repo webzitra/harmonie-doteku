@@ -72,11 +72,11 @@ Centrovaný řádek Inter 400, 13px, candle gold separátory.
 - Klik → otevře sliding panel sprava (ne nová stránka) s plným popisem a všemi cenami
 - 7. „karta" / poslední pozice: **Tantra** = jiný styling (terracotta border), „Vlastní cesta →" vede na `/tantra`
 
-### 6. RENÁTA — about block
+### 6. RENATA — about block
 **Cíl:** Personifikace. Lidský obličej za prostorem.
 
 - 2 sloupce — left foto (portrét; pokud chybí, dotočit), right text
-- H2: „Renáta Altová"
+- H2: „Renata Altová"
 - Eyebrow: „Masérka a facilitátorka"
 - Text: 150–200 slov, krátké odstavce
   - kdo je, jak začala, co studuje/cvičí
@@ -170,7 +170,7 @@ Centrovaný řádek Inter 400, 13px, candle gold separátory.
 - Cena 2 000 Kč / 90 min
 
 ### 6. CITACE / DEDIKACE
-- 1 editorial citace italic, autor (např. Osho, Margot Anand) — Renáta vybere
+- 1 editorial citace italic, autor (např. Osho, Margot Anand) — Renata vybere
 
 ### 7. REZERVACE — odlišná
 - Bez quick-formuláře. „Tantrický termín se domlouvá po krátkém telefonickém rozhovoru."
