@@ -868,6 +868,88 @@
   .recenze .all-link a { color: var(--terracotta); font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; border-bottom: 1px solid rgba(169,96,63,0.45); padding-bottom: 4px; }
   @media (max-width: 800px) { .quotes { grid-template-columns: 1fr; } }
 
+  /* ====== VOUCHER BANNER ====== */
+  .voucher-banner {
+    position: relative;
+    background: rgba(30,20,16,0.86);
+    padding: clamp(70px, 11vh, 130px) var(--gutter);
+    border-top: 1px solid rgba(201,163,106,0.14);
+    border-bottom: 1px solid rgba(201,163,106,0.14);
+    overflow: hidden;
+  }
+  .voucher-banner::before {
+    content: '';
+    position: absolute; inset: 0; pointer-events: none;
+    background:
+      radial-gradient(ellipse at 80% 50%, rgba(201,163,106,0.14) 0%, rgba(201,163,106,0) 60%),
+      radial-gradient(ellipse at 15% 30%, rgba(169,96,63,0.1) 0%, rgba(169,96,63,0) 55%);
+  }
+  .voucher-banner .wrap {
+    max-width: var(--maxw); margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: clamp(40px, 6vw, 80px);
+    align-items: center;
+    position: relative; z-index: 1;
+  }
+  .voucher-banner .copy { max-width: 480px; }
+  .voucher-banner .eyebrow { font-weight: 500; font-size: 12px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--candle); margin-bottom: 22px; }
+  .voucher-banner h2 { font-family: var(--serif); font-weight: 300; font-size: clamp(34px, 4.5vw, 56px); line-height: 1.1; letter-spacing: -0.012em; color: var(--linen); margin: 0 0 22px; }
+  .voucher-banner h2 em { font-style: italic; color: var(--candle); font-weight: 300; }
+  .voucher-banner p { color: rgba(232,221,201,0.74); margin: 0 0 36px; font-size: 16.5px; line-height: 1.7; }
+  .voucher-banner .ctas { display: flex; gap: 18px; align-items: center; flex-wrap: wrap; }
+  .voucher-banner .ctas .btn-primary {
+    background: var(--candle); color: var(--cave);
+    padding: 16px 30px; border-radius: 2px;
+    font-family: var(--sans); font-weight: 500;
+    font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase;
+    transition: background 200ms, transform 200ms;
+  }
+  .voucher-banner .ctas .btn-primary:hover { background: var(--linen); transform: translateY(-1px); }
+  .voucher-banner .ctas .btn-ghost {
+    color: var(--linen);
+    font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase;
+    border-bottom: 1px solid rgba(232,221,201,0.4);
+    padding-bottom: 4px;
+    transition: color 200ms, border-color 200ms;
+  }
+  .voucher-banner .ctas .btn-ghost:hover { color: var(--candle); border-color: var(--candle); }
+  .voucher-banner .photo {
+    position: relative;
+    aspect-ratio: 4/5;
+    overflow: hidden;
+    border-radius: 2px;
+    background: var(--ember);
+  }
+  .voucher-banner .photo img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 2s cubic-bezier(.16,.84,.3,1), filter 1.2s ease;
+    filter: brightness(0.92);
+  }
+  .voucher-banner .photo:hover img { transform: scale(1.04); filter: brightness(1.02); }
+  .voucher-banner .photo::after {
+    content: '';
+    position: absolute; inset: 0; pointer-events: none;
+    background: linear-gradient(160deg, transparent 50%, rgba(15,11,8,0.5) 100%);
+  }
+  .voucher-banner .seal {
+    position: absolute; top: 24px; right: 24px; z-index: 2;
+    background: rgba(15,11,8,0.85);
+    border: 1px solid rgba(201,163,106,0.5);
+    color: var(--candle);
+    padding: 10px 16px;
+    font-family: var(--sans); font-weight: 500;
+    font-size: 10.5px; letter-spacing: 0.24em; text-transform: uppercase;
+    border-radius: 2px;
+    backdrop-filter: blur(8px);
+  }
+  @media (max-width: 800px) {
+    .voucher-banner .wrap { grid-template-columns: 1fr; }
+    .voucher-banner .photo { aspect-ratio: 5/4; max-height: 380px; }
+    .voucher-banner .copy { order: 2; }
+    .voucher-banner .photo { order: 1; }
+  }
+
   /* ====== KONTAKT ====== */
   .kontakt { background: rgba(15,11,8,0.86); padding: clamp(80px, 12vh, 160px) var(--gutter); position: relative; }
   .kontakt .wrap { max-width: var(--maxw); margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: clamp(48px, 6vw, 96px); align-items: start; }
@@ -1106,7 +1188,7 @@
     <a href="#prostor">Prostor</a>
     <a href="#masaze">Masáže</a>
     <a href="/tantra">Tantra</a>
-    <a href="#o-mne">O mně</a>
+    <a href="/voucher">Dárek</a>
     <a href="#kontakt">Kontakt</a>
     <a href="#kontakt" class="cta">Rezervovat</a>
   </div>
@@ -1367,6 +1449,25 @@
       </div>
     </div>
     <div class="all-link"><a href="https://www.firmy.cz/detail/13805487-harmonie-doteku-masaze-jihlava-jihlava.html" target="_blank" rel="noopener">Všechny recenze na Firmy.cz →</a></div>
+  </div>
+</section>
+
+<!-- VOUCHER BANNER -->
+<section class="voucher-banner reveal" id="voucher" aria-label="Dárkový poukaz">
+  <div class="wrap">
+    <div class="copy">
+      <p class="eyebrow">Dárek</p>
+      <h2>Hodina, kterou <em>darujete</em>.</h2>
+      <p>Pro někoho blízkého — partnera, maminku, kolegyni co pořád stoná na záda. Klenutý prostor, svíčka a vlastní dech jako balíček. Pošlu PDF poukaz do mailu okamžitě po platbě.</p>
+      <div class="ctas">
+        <a href="/voucher" class="btn-primary">Vybrat poukaz</a>
+        <a href="/voucher" class="btn-ghost">Více o dárku →</a>
+      </div>
+    </div>
+    <div class="photo">
+      <span class="seal" aria-hidden="true">Od 1 500 Kč</span>
+      <img src="fotky/foto-9.jpg" alt="Detail svíček s dřevěnou soškou — symbol dárkového rituálu" loading="lazy" width="800" height="1000" />
+    </div>
   </div>
 </section>
 
