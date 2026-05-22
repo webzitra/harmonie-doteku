@@ -310,9 +310,14 @@
     padding: 22px var(--gutter);
     display: flex; align-items: center; justify-content: space-between;
     background: linear-gradient(to bottom, rgba(15,11,8,0.55) 0%, rgba(15,11,8,0) 100%);
-    transition: background 400ms ease, padding 400ms ease;
+    transition: background 400ms ease, padding 400ms ease, backdrop-filter 400ms ease;
   }
-  nav.scrolled { background: rgba(15,11,8,0.92); padding: 14px var(--gutter); }
+  nav.scrolled {
+    background: rgba(15,11,8,0.96);
+    backdrop-filter: blur(10px) saturate(1.05);
+    -webkit-backdrop-filter: blur(10px) saturate(1.05);
+    padding: 14px var(--gutter);
+  }
   .brand {
     font-family: var(--serif);
     font-weight: 400;
@@ -961,6 +966,9 @@
   /* ====== KONTAKT ====== */
   .kontakt { background: rgba(15,11,8,0.78); padding: clamp(80px, 12vh, 160px) var(--gutter); position: relative; }
   .kontakt .wrap { max-width: var(--maxw); margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: clamp(48px, 6vw, 96px); align-items: start; }
+  .kontakt .wrap > * { min-width: 0; }
+  .kontakt .info-line .value { min-width: 0; flex: 1; word-break: break-word; overflow-wrap: anywhere; }
+  .kontakt .info-line .value a { word-break: break-all; }
   .kontakt .eyebrow { font-weight: 500; font-size: 12px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--candle); margin-bottom: 22px; }
   .kontakt h2 { font-family: var(--serif); font-weight: 300; font-size: clamp(30px, 4vw, 52px); line-height: 1.12; color: var(--linen); margin: 0 0 28px; }
   .kontakt h2 em { font-style: italic; color: var(--candle); }
@@ -1012,9 +1020,10 @@
   .map-loaded iframe { width: 100%; height: 100%; border: 0; display: block; }
   .map-link { position: absolute; bottom: 18px; right: 18px; z-index: 3; background: rgba(15,11,8,0.85); color: var(--candle); padding: 10px 18px; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; border: 1px solid rgba(201,163,106,0.4); border-radius: 2px; transition: background 200ms, color 200ms; }
   .map-link:hover { background: var(--candle); color: var(--cave); border-color: var(--candle); }
-  .form { margin-top: 36px; display: grid; gap: 14px; }
+  .form { margin-top: 36px; display: grid; gap: 14px; min-width: 0; }
+  .form > *, .form .row > * { min-width: 0; }
   .form .row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-  .form input, .form select, .form textarea { background: var(--ember); border: 1px solid rgba(201,163,106,0.22); color: var(--linen); padding: 14px 16px; font-family: var(--sans); font-size: 15px; border-radius: 2px; transition: border-color 200ms; }
+  .form input, .form select, .form textarea { background: var(--ember); border: 1px solid rgba(201,163,106,0.22); color: var(--linen); padding: 14px 16px; font-family: var(--sans); font-size: 15px; border-radius: 2px; transition: border-color 200ms; width: 100%; max-width: 100%; }
   .form input:focus, .form select:focus, .form textarea:focus { outline: none; border-color: var(--candle); }
   .form input::placeholder, .form textarea::placeholder { color: rgba(232,221,201,0.4); }
   .form select { appearance: none; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path d='M1 1l4 4 4-4' stroke='%23C9A36A' stroke-width='1.4' fill='none'/></svg>"); background-repeat: no-repeat; background-position: right 16px center; padding-right: 36px; }
@@ -1023,6 +1032,11 @@
   .form button:hover { background: var(--linen); }
   .form .reply-hint { font-size: 12px; color: rgba(232,221,201,0.5); margin-top: 8px; }
   @media (max-width: 900px) { .kontakt .wrap { grid-template-columns: 1fr; } .form .row { grid-template-columns: 1fr; } }
+  @media (max-width: 560px) {
+    .kontakt .info-line { flex-direction: column; align-items: flex-start; gap: 6px; padding: 12px 0; }
+    .kontakt .info-line .label { flex: none; font-size: 10.5px; letter-spacing: 0.22em; }
+    .kontakt .info-line .value { font-size: 15px; }
+  }
 
   /* ====== FOOTER ====== */
   footer { background: rgba(30,20,16,0.92); border-top: 1px solid rgba(201,163,106,0.18); padding: clamp(50px, 7vh, 90px) var(--gutter) 30px; color: rgba(232,221,201,0.55); font-size: 13px; letter-spacing: 0.04em; position: relative; }

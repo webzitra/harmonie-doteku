@@ -91,9 +91,18 @@
     text-transform: uppercase;
     color: var(--linen); opacity: 0.7;
     display: inline-flex; align-items: center; gap: 8px;
+    white-space: nowrap;
     transition: opacity 200ms, color 200ms;
   }
   .nav-back:hover { opacity: 1; color: var(--terracotta); }
+  .nav-back .back-full { display: inline; }
+  .nav-back .back-short { display: none; }
+  @media (max-width: 560px) {
+    .nav-back { font-size: 11px; letter-spacing: 0.12em; gap: 4px; }
+    .nav-back .back-full { display: none; }
+    .nav-back .back-short { display: inline; }
+    .brand { font-size: 16px; letter-spacing: 0.1em; }
+  }
 
   /* ====== HERO ====== */
   .hero {
@@ -422,7 +431,7 @@
 <body>
 
 <nav id="nav">
-  <a href="/" class="nav-back">← Zpět na hlavní</a>
+  <a href="/" class="nav-back"><span class="back-full">← Zpět na hlavní</span><span class="back-short">← Zpět</span></a>
   <a href="/" class="brand">Harmonie<span class="dot">·</span>doteků</a>
 </nav>
 
