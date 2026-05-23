@@ -1056,6 +1056,72 @@
   footer .meta a:hover { color: var(--candle); border-color: var(--candle); }
   @media (max-width: 800px) { footer .wrap { grid-template-columns: 1fr; gap: 40px; } footer .meta { flex-direction: column; gap: 12px; } }
 
+  /* ====== WHATSAPP BUBBLE ====== */
+  .wa-bubble {
+    position: fixed;
+    right: clamp(18px, 2.4vw, 28px);
+    bottom: clamp(18px, 2.4vw, 28px);
+    z-index: 90;
+    display: inline-flex; align-items: center; gap: 12px;
+    padding: 12px 18px 12px 12px;
+    background: linear-gradient(140deg, rgba(30,20,16,0.96) 0%, rgba(15,11,8,0.98) 100%);
+    color: var(--linen);
+    border: 1px solid rgba(201,163,106,0.42);
+    border-radius: 999px;
+    font-family: var(--sans); font-weight: 500;
+    font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase;
+    text-decoration: none;
+    box-shadow:
+      0 2px 18px rgba(0,0,0,0.45),
+      0 0 0 0 rgba(201,163,106,0.55);
+    -webkit-backdrop-filter: blur(8px) saturate(1.05);
+    backdrop-filter: blur(8px) saturate(1.05);
+    transition: transform 240ms cubic-bezier(.16,.84,.3,1), box-shadow 240ms ease, border-color 240ms ease, background 240ms ease;
+    animation: waHalo 4.8s ease-in-out infinite;
+  }
+  .wa-bubble:hover {
+    transform: translateY(-2px);
+    border-color: var(--candle);
+    box-shadow:
+      0 6px 26px rgba(0,0,0,0.55),
+      0 0 0 6px rgba(201,163,106,0.12);
+  }
+  .wa-bubble:focus-visible {
+    outline: 2px solid var(--candle);
+    outline-offset: 4px;
+  }
+  .wa-bubble .wa-icon {
+    width: 38px; height: 38px;
+    display: inline-flex; align-items: center; justify-content: center;
+    background: radial-gradient(circle at 35% 30%, #E8C58A 0%, var(--candle) 55%, #8C6F47 100%);
+    border-radius: 50%;
+    color: var(--cave);
+    box-shadow: inset 0 0 0 1px rgba(15,11,8,0.18), 0 1px 6px rgba(201,163,106,0.32);
+    flex: none;
+  }
+  .wa-bubble .wa-icon svg { width: 20px; height: 20px; display: block; }
+  .wa-bubble .wa-label { line-height: 1; padding-right: 6px; white-space: nowrap; }
+  @keyframes waHalo {
+    0%, 100% { box-shadow: 0 2px 18px rgba(0,0,0,0.45), 0 0 0 0 rgba(201,163,106,0.55); }
+    60%      { box-shadow: 0 2px 18px rgba(0,0,0,0.45), 0 0 0 14px rgba(201,163,106,0); }
+  }
+  @media (max-width: 560px) {
+    .wa-bubble { padding: 10px; gap: 0; }
+    .wa-bubble .wa-label { display: none; }
+    .wa-bubble .wa-icon { width: 44px; height: 44px; }
+    .wa-bubble .wa-icon svg { width: 24px; height: 24px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .wa-bubble { animation: none; }
+  }
+  @media print { .wa-bubble { display: none !important; } }
+  /* Posunout, aby nebyl pod cookie bannerem ani modalem */
+  body.cookie-open .wa-bubble,
+  body.modal-open .wa-bubble {
+    opacity: 0; pointer-events: none; transform: translateY(20px);
+    transition: opacity 200ms ease, transform 200ms ease;
+  }
+
   /* ====== COOKIE BANNER — full-width strip s rohy ====== */
   .cookie-banner {
     position: fixed;
@@ -1622,6 +1688,17 @@
   </div>
 </footer>
 
+<!-- WHATSAPP BUBBLE -->
+<a class="wa-bubble"
+   href="https://wa.me/420725433655?text=Dobr%C3%BD%20den%20Renato%2C%20r%C3%A1d%20bych%20se%20zeptal(a)%20na..."
+   target="_blank" rel="noopener"
+   aria-label="Napsat Renátě na WhatsApp">
+  <span class="wa-icon" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="currentColor" focusable="false"><path d="M19.05 4.91A9.82 9.82 0 0 0 12.06 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.81 1.23h.01c5.46 0 9.91-4.45 9.91-9.91a9.82 9.82 0 0 0-2.93-7.03zM12.06 20.15h-.01a8.22 8.22 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.18 8.18 0 0 1-1.25-4.38c0-4.54 3.7-8.24 8.24-8.24 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.16.25-.64.81-.79.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.16.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.16 0-.43.06-.66.31-.23.25-.86.84-.86 2.05 0 1.21.88 2.38 1 2.54.12.16 1.74 2.65 4.21 3.72.59.25 1.05.4 1.4.52.59.19 1.13.16 1.55.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.11-.22-.16-.47-.29z"/></svg>
+  </span>
+  <span class="wa-label">WhatsApp</span>
+</a>
+
 <!-- COOKIE BANNER — full-width strip s rohy -->
 <aside class="cookie-banner" id="cookie-banner" role="region" aria-label="Cookies">
   <div class="cookie-inner">
@@ -1881,8 +1958,8 @@
   // Cookie banner
   const COOKIE_KEY = 'hd-consent';
   const banner = document.getElementById('cookie-banner');
-  function hideBanner() { banner.classList.remove('shown'); }
-  function showBanner() { banner.classList.add('shown'); }
+  function hideBanner() { banner.classList.remove('shown'); document.body.classList.remove('cookie-open'); }
+  function showBanner() { banner.classList.add('shown'); document.body.classList.add('cookie-open'); }
   if (!localStorage.getItem(COOKIE_KEY)) {
     setTimeout(showBanner, 1200);
   }
@@ -1903,6 +1980,7 @@
     modalLastFocus = trigger || document.activeElement;
     modal.classList.add('shown'); modal.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
+    document.body.classList.add('modal-open');
     const closeBtn = modal.querySelector('[data-close]');
     if (closeBtn) setTimeout(() => closeBtn.focus(), 50);
     modalReleaseTrap = trapFocus(modal, closeModal);
@@ -1910,6 +1988,7 @@
   function closeModal() {
     modal.classList.remove('shown'); modal.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
+    document.body.classList.remove('modal-open');
     if (modalReleaseTrap) { modalReleaseTrap(); modalReleaseTrap = null; }
     if (modalLastFocus && typeof modalLastFocus.focus === 'function') modalLastFocus.focus();
   }
