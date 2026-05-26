@@ -883,26 +883,6 @@
     line-height: 1.55; color: rgba(232,221,201,0.78);
     margin: 0 0 24px; text-wrap: pretty;
   }
-  .film-toggle {
-    display: inline-flex; align-items: center; gap: 10px;
-    background: rgba(15,11,8,0.55);
-    color: var(--linen);
-    border: 1px solid rgba(201,163,106,0.35);
-    padding: 11px 18px;
-    border-radius: 999px;
-    font-family: var(--sans); font-weight: 500;
-    font-size: 11.5px; letter-spacing: 0.2em; text-transform: uppercase;
-    cursor: pointer;
-    -webkit-backdrop-filter: blur(6px);
-    backdrop-filter: blur(6px);
-    transition: border-color 200ms, color 200ms, background 200ms, transform 200ms;
-  }
-  .film-toggle:hover { border-color: var(--candle); color: var(--candle); transform: translateY(-1px); }
-  .film-toggle:focus-visible { outline: 2px solid var(--candle); outline-offset: 4px; }
-  .film-toggle-icon { display: inline-flex; align-items: center; }
-  .film-toggle-icon svg { width: 16px; height: 16px; }
-  .film-toggle.is-on .film-toggle-icon svg line { display: none; }
-  .film-toggle.is-on { border-color: var(--candle); color: var(--candle); }
   @media (max-width: 700px) {
     .film-stage { aspect-ratio: 4 / 5; }
     .film-copy { right: clamp(20px, 5vw, 40px); }
@@ -1566,16 +1546,6 @@
       <div class="eyebrow">Pohled dovnitř</div>
       <h2 id="film-heading">Hodina u <em>mě</em>.</h2>
       <p>Třicet vteřin ticha, dechu a doteků. Bez slov.</p>
-      <button type="button" class="film-toggle" id="film-toggle" aria-label="Zapnout zvuk">
-        <span class="film-toggle-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" focusable="false">
-            <path d="M11 5L6 9H2v6h4l5 4V5z"/>
-            <line x1="23" y1="9" x2="17" y2="15"/>
-            <line x1="17" y1="9" x2="23" y2="15"/>
-          </svg>
-        </span>
-        <span class="film-toggle-label">Zvuk</span>
-      </button>
     </div>
   </div>
 </section>
@@ -2108,29 +2078,16 @@
   modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
   document.querySelectorAll('[data-close]').forEach(el => el.addEventListener('click', closeModal));
 
-  // Film — mute toggle (klient sám rozhodne, default mute kvůli autoplay policy)
+  // Film — pause video když je mimo viewport (šetří baterii)
   const filmVideo = document.querySelector('.film-video');
-  const filmToggle = document.getElementById('film-toggle');
-  const filmToggleLabel = filmToggle && filmToggle.querySelector('.film-toggle-label');
-  if (filmVideo && filmToggle) {
-    filmToggle.addEventListener('click', () => {
-      const on = filmVideo.muted;
-      filmVideo.muted = !on;
-      filmToggle.classList.toggle('is-on', on);
-      filmToggle.setAttribute('aria-label', on ? 'Vypnout zvuk' : 'Zapnout zvuk');
-      if (filmToggleLabel) filmToggleLabel.textContent = on ? 'Ticho' : 'Zvuk';
-      if (on) filmVideo.play().catch(() => {});
-    });
-    // Šetřit baterii: pause video když je mimo viewport
-    if ('IntersectionObserver' in window) {
-      const io = new IntersectionObserver((entries) => {
-        entries.forEach(e => {
-          if (e.isIntersecting) filmVideo.play().catch(() => {});
-          else filmVideo.pause();
-        });
-      }, { threshold: 0.15 });
-      io.observe(filmVideo);
-    }
+  if (filmVideo && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) filmVideo.play().catch(() => {});
+        else filmVideo.pause();
+      });
+    }, { threshold: 0.15 });
+    io.observe(filmVideo);
   }
 </script>
 </body>
