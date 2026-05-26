@@ -2078,16 +2078,26 @@
   modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
   document.querySelectorAll('[data-close]').forEach(el => el.addEventListener('click', closeModal));
 
-  // Film — pause video když je mimo viewport (šetří baterii)
+  // Film — loop safety + pause když mimo viewport (šetří baterii)
   const filmVideo = document.querySelector('.film-video');
-  if (filmVideo && 'IntersectionObserver' in window) {
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) filmVideo.play().catch(() => {});
-        else filmVideo.pause();
-      });
-    }, { threshold: 0.15 });
-    io.observe(filmVideo);
+  if (filmVideo) {
+    filmVideo.loop = true;
+    filmVideo.muted = true;
+    filmVideo.playsInline = true;
+    // Safety net pokud `loop` atribut z nějakého důvodu selže (mobile browsers občas dropnou)
+    filmVideo.addEventListener('ended', () => {
+      filmVideo.currentTime = 0;
+      filmVideo.play().catch(() => {});
+    });
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) filmVideo.play().catch(() => {});
+          else filmVideo.pause();
+        });
+      }, { threshold: 0.15 });
+      io.observe(filmVideo);
+    }
   }
 </script>
 </body>
